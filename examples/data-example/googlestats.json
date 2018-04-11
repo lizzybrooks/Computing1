@@ -1,0 +1,40 @@
+{
+    "employment": [
+        {
+            "job": "executive",
+            "male": 27,
+            "female": 4
+        },
+        {
+            "job": "manager",
+            "male": 6798,
+            "female": 3965
+        },
+        {
+            "job": "professional",
+            "male": 24652,
+            "female": 7440
+        },
+        {
+            "job": "technician",
+            "male": 474,
+            "female": 86
+        },
+        {
+            "job": "sales",
+            "male": 1090,
+            "female": 1148
+        },
+        {
+            "job": "admin",
+            "male": 129,
+            "female": 684
+        },
+        {
+            "job": "service",
+            "male": 190,
+            "female": 103
+        }
+
+    ]
+}
