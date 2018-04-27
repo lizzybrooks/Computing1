@@ -45,7 +45,7 @@ class Avatar {
 	}
 
 	drawMe(){  // draw the running person
-    		stroke("blue");
+    		stroke("green");
         strokeWeight(3);
     		fill("blue");
 		    ellipse(this.x,this.y,20,20);
