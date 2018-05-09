@@ -1,114 +1,46 @@
-
+//baby pic used in class example is by ms. brooks. cite url for pics found online
 var img;
-var link;
-var inp;
 
-var input, button, greeting;
-
-
+//preload will load before setup runs
 function preload() {
-  img = loadImage("https://makezine.com/wp-content/uploads/2016/08/china-world-trade-center-beijing.jpg");
-  //img = loadImage ("https://makezine.com/wp-content/uploads/2016/08/china-world-trade-center-beijing.jpg");
-  //img = loadImage(link.input);
-  //img = loadImage(img);
-
+  //this relative file path starts in the same folder as your sketch.
+  //In other words, in this example, make a folder called images in the same
+  //folder as your sketch file (sketch.js) and then put the image file ("kittens.jpg")
+  //inside of that.
+  img = loadImage("images/jomy.jpg");
 }
-
-
 
 function setup() {
+  createCanvas(img.width, img.height);
+  image(img, 0, 0); //draw the image to the canvas
+  console.log("Image width: " + img.width + " height: " + img.height);
 
-    createCanvas(800,700);
+  //one of the built-in filters to try out for inspiration! More at: https://p5js.org/reference/#/p5/filter
+  //uncomment to test
+  //filter(POSTERIZE, 5);
 
-    input = createInput();
-      input.position(20, 65);
-
-      button = createButton('submit');
-      button.position(input.x + input.width, 65);
-      button.mousePressed(newImage);
-
-      greeting = createElement('h2', 'Add your own picture by pasting its URL in this box');
-      greeting.position(20, 5);
-
-      textAlign(CENTER);
-      textSize(50);
-
-
-  // link = createInput('');
-  // link.position(0,0);
-  //
-  // cnv = createCanvas(1000, 1000);
-  // cnv.position(0,50);
-
-}
-
-function draw(){
-    // inp = link.value();
-    //
-    //
-    // console.log (inp);
-
-      // cnv = createCanvas(img.width, img.height);
-      // cnv.position(0,50);
-
-      image(img, 50, 50, img.width, img.height);
-      loadPixels();
-      for(var i=0;i<4*pixels.length;i+=4) {
-        if(pixels[i]+pixels[i+1]+pixels[i+2] >= 510) {
-          //light
-           pixels[i] = 255; //red
-           pixels[i+1] = 255; //green
-           pixels[i+2] = 255; //blue
-         } else if (pixels[i]+pixels[i+1]+pixels[i+2] < 255) {
-           //dark
-              pixels[i] = 211; //63 85 119
-              pixels[i+1] = 152; //226 176 167/ 211, 152, 146
-              pixels[i+2] = 146; //27 86 181
-          }else if (255 <= pixels[i]+pixels[i+1]+pixels[i+2]<510) {
-            //mid
-            pixels[i] = 237; //63 85 119
-            pixels[i+1] = 186; //226 176 167/ 211, 152, 146
-            pixels[i+2] = 177; //27 86 181
-          }
-        }
-
-      updatePixels();
-
-    // console.log ("bing bing bong bing bong");
-}
-
-
-
-  function newImage() {
-  var link = input.value();
- // greeting.html('displaying image at this link '+link);
-  input.value('');
-
-img = loadImage(link);
-  image(img, 50, 50, img.width, img.height);
-
+  //change pixels, draw a blue stripe
   loadPixels();
-  for(var i=0;i<4*pixels.length;i+=4) {
-    if(pixels[i]+pixels[i+1]+pixels[i+2] >= 510) {
-      //light
-       pixels[i] = 255; //red
-       pixels[i+1] = 255; //green
-       pixels[i+2] = 255; //blue
-     } else if (pixels[i]+pixels[i+1]+pixels[i+2] < 255) {
-       //dark
-          pixels[i] = 211; //63 85 119
-          pixels[i+1] = 152; //226 176 167/ 211, 152, 146
-          pixels[i+2] = 146; //27 86 181
-      }else if (255 <= pixels[i]+pixels[i+1]+pixels[i+2]<510) {
-        //mid
-        pixels[i] = 237; //63 85 119
-        pixels[i+1] = 186; //226 176 167/ 211, 152, 146
-        pixels[i+2] = 177; //27 86 181
-      }
+  for(var i=4*640*100;i<4*640*400;i+=4) {
+    if(pixels[i]>=200){
+      pixels[i] = 0; //red
+      pixels[i+1] = 255; //green
+      pixels[i+2] = 0; //blue
+      pixels[i+3] = 100; //alpha (transparency - works with PNGs, not JPGs)
     }
 
+  }
   updatePixels();
+
+  //change tint of pixels in a stripe by modifying the red channel
+  loadPixels();
+  for(var i=4*640*300;i<4*640*400;i+=4) {
+    pixels[i] = pixels[i]-50; //red
+  }
+  updatePixels();
+
 }
 
+function draw() {
 
-  //img = loadImage(link.input);
+}
