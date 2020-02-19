@@ -25,7 +25,22 @@ function mouseClicked(){
   spear.spearX = mouseX;
   spear.spearY = mouseY;
 
-}
+  if (pressed == 1){
+    print(spintimer);
+    push();
+    translate(650,325);
+    rotate(radians(frameCount));
+    stroke(0);
+    line(0,-175,0,175);
+    line(-175,0,175,0);
+    line(123.744,123.744,-123.744,-123.7443);
+    line(-123.744,123.744,123.744,-123.744);
+    pop();
+  }
+
+  if(frameCount == spintimer + 100){
+     pressed = 3;
+  }
 
 function keyPressed(){
         spear.moving = true;
